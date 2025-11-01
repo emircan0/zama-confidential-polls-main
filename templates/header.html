@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <!-- Logo + Brand -->
+    <a class="navbar-brand d-flex align-items-center fw-bold text-warning" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='zama_logo.jpg') }}"
+     alt="Zama Logo"
+     height="40" class="me-2 rounded-circle border border-2 border-warning">
+      Zama Polls
+    </a>
+
+    <!-- Mobile Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}"
+             href="{{ url_for('index') }}">Create Poll</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}"
+             href="{{ url_for('about') }}">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar-brand img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .navbar-brand img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #fed217;
+  }
+  .nav-link.active {
+    color: #fed217 !important;
+    font-weight: 600;
+  }
+  .nav-link:hover {
+    color: #fff176 !important;
+  }
+</style>

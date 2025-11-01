@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center">
+  <div class="card shadow-lg p-4">
+    <h2 class="mb-4 fw-bold text-success">{{ poll["question"] }}</h2>
+    <ul class="list-group">
+      {% for opt in options %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ opt["option_text"] }}
+          <span class="badge bg-primary rounded-pill">{{ opt["votes"] }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}" class="btn btn-outline-dark mt-4">➕ Create another poll</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <h2>🗳️ Your Polls</h2>
+  <form method="post" action="{{ url_for('create_poll') }}">
+    <div class="mb-3">
+      <input type="text" name="question" placeholder="Poll question" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <input type="text" name="options" placeholder="Option 1" class="form-control" required>
+      <input type="text" name="options" placeholder="Option 2" class="form-control mt-2" required>
+      <input type="text" name="options" placeholder="Option 3" class="form-control mt-2">
+    </div>
+    <button class="btn btn-success">Create Poll</button>
+  </form>
+
+  <hr>
+  <ul class="list-group">
+    {% for poll in polls %}
+      <li class="list-group-item">
+        {{ poll["question"] }}
+        <a href="{{ url_for('poll', poll_id=poll['id']) }}" class="btn btn-sm btn-primary float-end">View</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

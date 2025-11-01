@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-lg border-0"
+         style="border-radius:20px; background:linear-gradient(135deg,#fdfbfb,#ebedee);">
+      <div class="card-body p-5">
+
+        <!-- Başlık -->
+        <h2 class="text-center mb-4 fw-bold text-dark">
+          🗳️ Create a New Confidential Poll
+        </h2>
+        <p class="text-center text-muted mb-4">
+          Your question stays private. Share the link securely and get honest answers.
+        </p>
+
+        <!-- FORM -->
+        <form id="pollForm" method="post" action="{{ url_for('create_poll') }}">
+
+          <!-- Question -->
+          <div class="mb-4">
+            <label class="form-label fw-bold">Poll Question</label>
+            <input type="text" name="question" class="form-control form-control-lg"
+                   placeholder="What do you want to ask?" required>
+          </div>
+
+          <!-- Options -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Options</label>
+
+            <div id="optionsContainer">
+              <div class="input-group mb-2">
+                <input type="text" name="options" class="form-control" placeholder="Option 1" required>
+              </div>
+              <div class="input-group mb-2">
+                <input type="text" name="options" class="form-control" placeholder="Option 2" required>
+              </div>
+            </div>
+
+            <!-- Add Option Button -->
+            <div class="text-center mt-2">
+              <button type="button" class="btn zama-btn btn-sm" id="addOptionBtn">➕ Add Option</button>
+            </div>
+
+            <small class="text-muted d-block mt-3 text-center">Add or remove options freely.</small>
+          </div>
+
+          <!-- Submit -->
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success btn-lg px-5 zama-btn">🚀 Create Poll</button>
+          </div>
+        </form>
+
+        <!-- Pro Tip -->
+        <div class="alert alert-info mt-5 text-center" style="border-radius:12px;">
+          💡 <strong>Pro Tip:</strong> Short and clear questions get more responses.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script>
+let optionCount = 2;
+const container = document.getElementById("optionsContainer");
+const addButton = document.getElementById("addOptionBtn");
+
+// ➕ Add new option
+addButton.addEventListener("click", () => {
+  optionCount++;
+  const wrapper = document.createElement("div");
+  wrapper.className = "input-group mb-2";
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.name = "options";
+  input.className = "form-control";
+  input.placeholder = "Option " + optionCount;
+  input.required = true;
+
+  const removeBtn = document.createElement("button");
+  removeBtn.type = "button";
+  removeBtn.className = "btn btn-outline-danger";
+  removeBtn.innerHTML = "🗑️";
+  removeBtn.onclick = () => removeOption(wrapper);
+
+  wrapper.appendChild(input);
+  wrapper.appendChild(removeBtn);
+  container.appendChild(wrapper);
+});
+
+// 🗑️ Remove option
+function removeOption(wrapper) {
+  const total = container.querySelectorAll(".input-group").length;
+  if (total > 2) {
+    container.removeChild(wrapper);
+  } else {
+    alert("⚠️ At least 2 options are required.");
+  }
+}
+</script>
+
+<!-- ZAMA BUTON STİLİ -->
+<style>
+.zama-btn {
+  background-color: #fed217 !important;
+  border: none !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 6px rgba(254, 210, 23, 0.3);
+  transition: all 0.25s ease-in-out;
+}
+.zama-btn:hover {
+  background-color: #fff176 !important;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 241, 118, 0.5);
+}
+</style>
+{% endblock %}

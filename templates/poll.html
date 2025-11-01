@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body text-center">
+    <h3 class="mb-4">{{ poll["question"] }}</h3>
+
+    <form method="post" action="{{ url_for('vote', poll_id=poll['id']) }}">
+      
+      <div class="list-group mb-3 text-start">
+        {% for opt in options %}
+          <label class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="form-check">
+              <input type="radio" name="option" value="{{ opt['id'] }}" class="form-check-input" required>
+              <span class="ms-2">{{ opt['option_text'] }}</span>
+            </div>
+          </label>
+        {% endfor %}
+      </div>
+
+      <div class="mt-4 text-start">
+        <label for="email" class="form-label fw-bold">Verify Your Vote</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email address" required>
+        <div class="form-text">We’ll send a verification link to your email to prevent multiple votes.</div>
+      </div>
+      <button type="submit" class="btn btn-success btn-lg mt-3">Send Verification Email</button>
+    </form>
+    
+    <div class="mt-4">
+        <a href="{{ url_for('results', poll_id=poll['id']) }}">View Results</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

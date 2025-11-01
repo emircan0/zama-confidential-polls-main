@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Zama Confidential Polls</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 1️⃣ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 2️⃣ Senin özel CSS dosyan -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center fw-bold text-warning" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='zama_logo.jpg') }}" alt="Logo"
+           height="40" class="me-2 rounded-circle border border-2 border-warning">
+      Zama Polls
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Create Poll</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}" href="{{ url_for('about') }}">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main -->
+<main class="container py-4">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert-box my-4 text-center">
+          <div class="card shadow-sm border-0" style="border-radius:16px; max-width:600px; margin:auto;">
+            <div class="card-body">
+
+              {% if category == "success" %}
+                <h4 class="fw-bold text-success mb-3">✅ Success</h4>
+              {% elif category == "danger" %}
+                <h4 class="fw-bold text-danger mb-3">❌ Error</h4>
+              {% elif category == "warning" %}
+                <h4 class="fw-bold text-warning mb-3">⚠️ Warning</h4>
+              {% else %}
+                <h4 class="fw-bold mb-3">ℹ️ Info</h4>
+              {% endif %}
+
+              <p class="mb-3">{{ message }}</p>
+
+              {% if 'Poll created successfully' in message %}
+                <input type="text" id="pollLink" class="form-control text-center mb-3"
+                       value="{{ request.url }}" readonly>
+                <div class="d-flex justify-content-center gap-2">
+                  <button id="copyBtn" class="btn btn-outline-primary" onclick="copyLink()">Copy Link</button>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="text-center py-4 mt-5" style="background:#000; width:100%;">
+  <span style="color:#fed217; font-weight:bold; font-size:15px;">
+    © 2025 Zama Confidential Polls — All rights reserved.
+  </span>
+
+  <div class="card shadow-sm p-4 mt-4 text-center"
+       style="border-radius:20px; background:linear-gradient(135deg,#fdfbfb,#ebedee); max-width:500px; margin:auto; transition: all 0.4s ease;">
+    <div class="d-flex align-items-center justify-content-center mb-3">
+      <img src="{{ url_for('static', filename='profile_photo.jpg') }}"
+           alt="Profile" width="60" height="60"
+           class="rounded-circle me-3 profile-photo">
+      <div class="text-start">
+        <p class="mb-0 fw-bold">
+          Created by <a href="https://twitter.com/Cryptoeisenheim" target="_blank">@Cryptoeisenheim</a>
+        </p>
+        <small class="text-success">Follow for Crypto &amp; Testnet Alpha</small>
+      </div>
+    </div>
+
+    <!-- DÜZELTİLMİŞ BUTONLAR -->
+    <a href="https://twitter.com/Cryptoeisenheim" target="_blank"
+       class="btn zama-footer-btn w-100 mb-2">🐦 Follow me on Twitter</a>
+
+    <a href="https://github.com/emircan0/zama-confidential-polls-main" target="_blank"
+       class="btn zama-footer-btn w-100">⭐ View on GitHub</a>
+  </div>
+</footer>
+
+
+<!-- Extra Styles (sayfa içi küçük detaylar) -->
+<style>
+  footer a { text-decoration:none; }
+  .profile-photo { transition: transform 0.3s ease; }
+  .card:hover .profile-photo { transform: scale(1.1) rotate(5deg); }
+  .twitter-btn:hover {
+    background:#1DA1F2 !important;
+    transform: scale(1.05);
+    box-shadow:0 0 12px #1DA1F2;
+  }
+  .github-btn:hover {
+    background:#333 !important;
+    transform: scale(1.05);
+    box-shadow:0 0 12px #333;
+  }
+  #copyBtn.copied {
+    background-color: #28a745 !important;
+    color: white !important;
+    border-color: #28a745 !important;
+    pointer-events: none;
+  }
+</style>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Copy Link Script -->
+<script>
+function copyLink() {
+  const input = document.getElementById("pollLink");
+  const btn = document.getElementById("copyBtn");
+  if (!input || !btn) return;
+
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value);
+
+  btn.classList.add("copied");
+  btn.innerText = "Copied ✅";
+  setTimeout(() => {
+    btn.classList.remove("copied");
+    btn.innerText = "Copy Link";
+  }, 2000);
+}
+</script>
+
+</body>
+</html>

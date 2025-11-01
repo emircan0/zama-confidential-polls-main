@@ -1,0 +1,210 @@
+/* === GENEL AYARLAR === */
+body {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+/* Main content */
+main {
+  min-height: 70vh;
+}
+
+/* Footer */
+footer {
+  font-size: 0.9rem;
+  background: linear-gradient(to right, #ffffff, #f8f9fa);
+  border-top: 1px solid #eaeaea;
+}
+
+footer a {
+  color: #0d6efd;
+}
+
+footer a:hover {
+  color: #0a58ca;
+  text-decoration: underline;
+}
+
+/* Kartlar */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Inputlar */
+.form-control, .form-select {
+  border-radius: 8px;
+  box-shadow: none !important;
+  border: 1px solid #ddd;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #0d6efd;
+}
+
+/* Başlıklar */
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  color: #222;
+}
+
+/* Animasyonlu fade-in */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Seçenek kutuları */
+#optionsContainer input {
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease;
+}
+#optionsContainer input:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 6px rgba(255,193,7,0.4);
+}
+
+/* Progress bar */
+.progress {
+  background-color: #e9ecef;
+  border-radius: 10px;
+}
+.progress-bar {
+  transition: width 0.6s ease;
+}
+
+/* === ZAMA OVERRIDE: NAVBAR + BUTTONLAR === */
+
+/* Navbar zemin */
+.navbar {
+  background-color: #000 !important;
+}
+
+/* Navbar linkleri (sarı ton) */
+.navbar .navbar-nav .nav-link,
+.navbar-dark .navbar-nav .nav-link {
+  color: #fed217 !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  margin-left: 10px;
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Hover - açık sarı */
+.navbar .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #fff176 !important;
+  transform: translateY(-2px);
+}
+
+/* Aktif link */
+.navbar .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #fed217 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 6px rgba(254,210,23,0.6);
+}
+
+/* === ZAMA BUTONLAR === */
+.btn,
+.btn-primary,
+.btn-success {
+  background-color: #fed217 !important;
+  border: none !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 6px rgba(254, 210, 23, 0.3);
+  transition: all 0.25s ease-in-out;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-success:hover {
+  background-color: #fff176 !important;
+  color: #000 !important;
+  transform: scale(1.04);
+  box-shadow: 0 0 12px rgba(255, 241, 118, 0.5);
+}
+
+/* Outline butonlar */
+.btn-outline-primary,
+.btn-outline-success {
+  border: 2px solid #fed217 !important;
+  color: #fed217 !important;
+  font-weight: 600 !important;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-success:hover {
+  background-color: #fed217 !important;
+  color: #000 !important;
+  box-shadow: 0 0 10px rgba(254, 210, 23, 0.5);
+}
+
+/* === FOOTER BUTONLARI: ZAMA RENK TEMASI === */
+.twitter-btn,
+.github-btn {
+  background-color: #fed217 !important;   /* Ana sarı */
+  color: #000 !important;                 /* Siyah yazı */
+  border: none !important;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 8px rgba(254, 210, 23, 0.4);
+}
+
+/* Hover efekti - daha açık sarı */
+.twitter-btn:hover,
+.github-btn:hover {
+  background-color: #fff176 !important;   /* Açık sarı */
+  color: #000 !important;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 241, 118, 0.7);
+}
+
+/* === FOOTER: TWITTER & GITHUB BUTONLARI (ZAMA STİLİ) === */
+.zama-footer-btn {
+  background-color: #fed217 !important;   /* Zama sarısı */
+  color: #000 !important;                 /* Siyah yazı */
+  font-weight: 700;
+  border: none !important;
+  border-radius: 10px;
+  padding: 12px 0;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(254, 210, 23, 0.4);
+  text-transform: none;
+}
+
+/* Hover efekti (açık sarı parıltı) */
+.zama-footer-btn:hover {
+  background-color: #fff176 !important;   /* Açık sarı */
+  color: #000 !important;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 241, 118, 0.7);
+}
+
+

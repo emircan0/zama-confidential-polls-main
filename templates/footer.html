@@ -1,0 +1,43 @@
+<footer class="text-center py-4 mt-5" style="background:#000; width:100%;">
+  <span style="color:#fed217; font-weight:bold; font-size:15px;">
+    © 2025 Zama Confidential Polls — All rights reserved.
+  </span>
+
+  <!-- Twitter + GitHub Kartı -->
+  <div class="card shadow-sm p-4 mt-4 text-center"
+       style="border-radius:20px; background:linear-gradient(135deg,#fdfbfb,#ebedee); max-width:500px; margin:auto; transition: all 0.4s ease;">
+    <div class="d-flex align-items-center justify-content-center mb-3">
+      <img src="{{ url_for('static', filename='profile_photo.jpg') }}"
+           alt="Profile" width="60" height="60"
+           class="rounded-circle me-3 profile-photo">
+      <div class="text-start">
+        <p class="mb-0 fw-bold">
+          Created by <a href="https://twitter.com/Cryptoeisenheim" target="_blank">@Cryptoeisenheim</a>
+        </p>
+        <small class="text-success">Follow for Crypto &amp; Testnet Alpha</small>
+      </div>
+    </div>
+
+    <a href="https://twitter.com/Cryptoeisenheim" target="_blank"
+       class="btn btn-success fw-bold w-100 mb-2 twitter-btn">🐦 Follow me on Twitter</a>
+
+    <a href="https://github.com/emircan0/zama-confidential-polls-main"
+       target="_blank" class="btn btn-dark fw-bold w-100 github-btn">⭐ View on GitHub</a>
+  </div>
+</footer>
+
+<style>
+  footer a { text-decoration:none; }
+  .profile-photo { transition: transform 0.3s ease; }
+  .card:hover .profile-photo { transform: scale(1.1) rotate(5deg); }
+  .twitter-btn:hover {
+    background:#1DA1F2 !important;
+    transform: scale(1.05);
+    box-shadow:0 0 12px #1DA1F2;
+  }
+  .github-btn:hover {
+    background:#333 !important;
+    transform: scale(1.05);
+    box-shadow:0 0 12px #333;
+  }
+</style>

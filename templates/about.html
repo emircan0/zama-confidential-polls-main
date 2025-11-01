@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5 text-center">
+
+  <!-- Hero -->
+  <div class="mb-5 fade-in">
+    <img src="{{ url_for('static', filename='zama_logo.jpg') }}" 
+         alt="Zama Logo" class="img-fluid mb-4" style="height:100px;">
+    <h1 class="fw-bold text-gradient display-5">Verified Yet Private — The New Standard of Trust</h1>
+    <p class="lead mt-3 text-dark">
+      Your identity is verified by email, yet even we cannot see how you voted.  
+      Results are transparent, choices remain confidential.  
+      Inspired by <a href="https://zama.ai" target="_blank" class="fw-bold link-danger">Zama’s FHE revolution</a>.
+    </p>
+  </div>
+
+  <!-- About This Version (Developer/Beta-style) -->
+  <div class="row justify-content-center mb-5" id="about">
+    <div class="col-lg-10">
+      <div class="card shadow-lg border-0 rounded-4 p-5 fade-up" style="background:#f7f7ff;">
+        <h2 class="mb-3 fw-bold text-dark">🧑‍💻 About this version</h2>
+        <p class="fs-5 text-secondary">
+          <strong>Note on this version:</strong> This is an early release of Zama Confidential Polls, where votes are confirmed via email.
+        </p>
+        <p class="fs-5">
+          In the upcoming stage, all users will be able to <strong>verify their email once and then directly vote or launch new polls</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Confidential Polls -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-10">
+      <div class="card shadow-lg border-0 rounded-4 p-5 fade-up" style="background:#fffdf5;">
+        <h2 class="mb-4 fw-bold text-dark">🌍 Why Confidential Polls?</h2>
+        <p class="fs-5 text-secondary">
+          Traditional polls collect more than just answers — they log IPs, metadata, and device fingerprints.  
+          That compromises honesty and weakens trust.
+        </p>
+        <p class="fs-5">
+          In our system, <strong>identity verification</strong> is preserved,  
+          but the <strong>vote content remains anonymous</strong>.  
+          Each ballot is encrypted, unlinkable, and revealed only during aggregation.  
+          <span class="fw-bold text-dark">Real participants, private choices</span> — that’s our formula for trust.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- University Example -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-10">
+      <div class="card shadow-lg border-0 rounded-4 p-5 fade-up" style="background:#eefaf1;">
+        <h2 class="mb-4 fw-bold text-dark">🎓 Real Use Case: University Student Poll</h2>
+        <p class="fs-5 text-secondary">
+          A university wants to measure student satisfaction.  
+          Only verified students with the institutional email domain (<code>@uni.edu.tr</code>) can vote —  
+          outsiders are automatically excluded.
+        </p>
+        <p class="fs-5">
+          Each student verifies their email, yet the <strong>vote content stays encrypted</strong>.  
+          “Who voted for what” is technically impossible to trace.  
+          Results are decrypted only in aggregate form — ensuring  
+          <strong>fairness, authenticity, and complete privacy</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FHE Section -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-10">
+      <div class="card shadow-lg border-0 rounded-4 p-5 fade-up delay-1" style="background:#fef9e7;">
+        <h2 class="mb-4 fw-bold text-dark">🔐 The Future: Fully Homomorphic Encryption (FHE)</h2>
+        <p class="fs-5">
+          Today, ballots are secured with <strong>AES-256</strong>.  
+          Tomorrow, <strong>FHE</strong> will allow computations on encrypted data —  
+          servers can count votes without ever decrypting them.  
+          <em>Zero privacy loss, full verifiability.</em>
+        </p>
+        <p class="fs-5">
+          With <strong>Zama’s FHEVM</strong>, confidential computing becomes real:  
+          <em>servers stay blind, results stay correct.</em>  
+          Privacy isn’t optional anymore — it’s a standard.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workflow -->
+  <div id="workflow" class="mb-5">
+    <h2 class="mb-5 fw-bold">⚙️ How It Works — Community-First, Privacy-Guaranteed</h2>
+    <div class="timeline">
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-icon bg-success text-white shadow">1</div>
+        <h5 class="fw-bold mt-3">Upload Your Community</h5>
+        <p class="text-muted">
+          Import verified email lists (CSV or domain-restricted, e.g., <code>@uni.edu.tr</code>).  
+          Only authorized members can vote.
+        </p>
+        <div class="tip">Benefit: Authentic participation, no fake accounts.</div>
+      </div>
+
+      <div class="timeline-item fade-up delay-1">
+        <div class="timeline-icon bg-warning text-white shadow">2</div>
+        <h5 class="fw-bold mt-3">Email Verification</h5>
+        <p class="text-muted">
+          Each participant receives a one-time link to verify their identity.  
+          Verification is recorded — but <strong>never linked to their vote</strong>.
+        </p>
+        <div class="tip">Benefit: One verified person = one vote.</div>
+      </div>
+
+      <div class="timeline-item fade-up delay-2">
+        <div class="timeline-icon bg-primary text-white shadow">3</div>
+        <h5 class="fw-bold mt-3">Create Your Poll</h5>
+        <p class="text-muted">
+          Define your question and options. Set limits and expiry dates.  
+          Launch to selected groups within minutes.
+        </p>
+        <div class="tip">Benefit: Quick setup, flexible control.</div>
+      </div>
+
+      <div class="timeline-item fade-up delay-3">
+        <div class="timeline-icon bg-info text-white shadow">4</div>
+        <h5 class="fw-bold mt-3">Share the Secure Link</h5>
+        <p class="text-muted">
+          Verified users receive a private voting link.  
+          Tokens can’t be reused or forwarded — every ballot is unique.
+        </p>
+        <div class="tip">Benefit: Prevents unauthorized access.</div>
+      </div>
+
+      <div class="timeline-item fade-up delay-4">
+        <div class="timeline-icon bg-danger text-white shadow">5</div>
+        <h5 class="fw-bold mt-3">Private Vote — Encrypted in Browser</h5>
+        <p class="text-muted">
+          Votes are <strong>encrypted client-side</strong> before submission.  
+          The server never sees individual choices.
+        </p>
+        <div class="tip">Benefit: No link between identity and vote.</div>
+      </div>
+
+      <div class="timeline-item fade-up delay-5">
+        <div class="timeline-icon bg-dark text-white shadow">6</div>
+        <h5 class="fw-bold mt-3">Aggregate Results</h5>
+        <p class="text-muted">
+          Only aggregated, decrypted results are published — individual votes remain hidden.  
+          Optional audit trail with signed hashes ensures verifiability.
+        </p>
+        <div class="tip">Benefit: Transparent yet private outcomes.</div>
+      </div>
+
+      <div class="timeline-item fade-up delay-6">
+        <div class="timeline-icon bg-secondary text-white shadow">7</div>
+        <h5 class="fw-bold mt-3">Scale with FHE</h5>
+        <p class="text-muted">
+          With <strong>Zama FHEVM</strong>, votes stay encrypted even during computation —  
+          servers remain blind, integrity remains provable.
+        </p>
+        <div class="tip">Benefit: Mathematical privacy, zero leakage.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Final Section -->
+  <div class="fade-in mt-5">
+    <h2 class="fw-bold mb-3">🕵️ Verified Participation, Guaranteed Privacy</h2>
+    <p class="text-muted fs-5">
+      Build trust without exposing data.  
+      Verified identities ensure authenticity — fully encrypted ballots ensure confidentiality.  
+      Protected by today’s cryptography, powered by tomorrow’s FHE.
+    </p>
+    <p class="text-muted fs-5">
+      <strong>Zama Confidential Polls</strong> —  
+      where <em>transparency meets true anonymity</em>.
+    </p>
+  </div>
+
+</div>
+
+<!-- Styles -->
+<style>
+  .text-gradient {
+    background: linear-gradient(90deg, #ff9800, #f44336);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .card p { line-height: 1.7; }
+
+  /* Timeline layout - centered and cleaner */
+  .timeline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* merkezleme */
+    gap: 28px;
+    max-width: 1000px;        /* toplam genişliği sınırla */
+    margin: 0 auto;           /* ortala */
+  }
+  .timeline-item {
+    flex: 1 1 300px;          /* minimum 300px genişlik, satır kırılımı doğal */
+    max-width: 320px;         /* kutuların aşırı genişlemesini önle */
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 16px;
+    padding: 18px 18px 14px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+    margin: 0 auto;           /* tekli satırda da ortalı kalsın */
+  }
+  .timeline-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0,0,0,.10);
+  }
+  .timeline-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; font-weight: 800;
+    margin: 8px auto 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .timeline-icon:hover { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0,0,0,.15); }
+  .tip {
+    margin-top: 10px;
+    font-size: .95rem;
+    font-weight: 600;
+    color: #1f6f43;
+    background: #eaf7ef;
+    border: 1px solid #ccebd8;
+    padding: 8px 10px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  /* Animations */
+  .fade-in { animation: fadeIn 0.9s ease-in both; }
+  .fade-up { animation: fadeUp 0.9s ease-in both; }
+  .delay-1 { animation-delay: 0.12s; }
+  .delay-2 { animation-delay: 0.24s; }
+  .delay-3 { animation-delay: 0.36s; }
+  .delay-4 { animation-delay: 0.48s; }
+  .delay-5 { animation-delay: 0.60s; }
+  .delay-6 { animation-delay: 0.72s; }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  @keyframes fadeUp { from {opacity:0; transform:translateY(18px);} to {opacity:1; transform:translateY(0);} }
+</style>
+{% endblock %}
