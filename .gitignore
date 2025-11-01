@@ -205,3 +205,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# --- Zama Confidential Polls custom additions ---
+# Sensitive and local files
+.env
+*.db
+instance/
+__pycache__/
